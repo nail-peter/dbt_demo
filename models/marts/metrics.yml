@@ -1,178 +1,41 @@
 version: 2
 
+# Simplified metrics for dbt Cloud compatibility
+# These reference the semantic models defined in semantic_models.yml
+
 metrics:
-  # Revenue Metrics
   - name: total_revenue
     label: "Total Revenue"
-    model: ref('mart_sales_summary')
-    description: "Sum of all order values"
+    description: "Sum of all order values from sales"
     type: simple
     type_params:
-      measure: total_amount
+      measure: total_revenue
 
-  - name: monthly_revenue
-    label: "Monthly Revenue"
-    model: ref('mart_sales_summary')
-    description: "Monthly revenue growth"
-    type: simple
-    type_params:
-      measure: total_amount
-
-  - name: revenue_growth_rate
-    label: "Revenue Growth Rate"
-    model: ref('mart_sales_summary')
-    description: "Month-over-month revenue growth rate"
-    type: ratio
-    type_params:
-      numerator: total_revenue
-      denominator: total_revenue
-    meta:
-      calculation: "((current_month_revenue - previous_month_revenue) / previous_month_revenue) * 100"
-
-  # Order Metrics
-  - name: total_orders
+  - name: order_count_metric
     label: "Total Orders"
-    model: ref('mart_sales_summary')
-    description: "Total number of orders"
+    description: "Count of all orders"
     type: simple
     type_params:
-      measure:
-        name: order_count
-        agg: count
+      measure: order_count
 
-  - name: average_order_value
+  - name: avg_order_value_metric
     label: "Average Order Value"
-    model: ref('mart_sales_summary')
     description: "Average value per order"
     type: simple
     type_params:
-      measure:
-        name: avg_order_value
-        agg: average
-        expr: total_amount
+      measure: average_order_value
 
-  # Customer Metrics
-  - name: total_customers
-    label: "Total Customers"
-    model: ref('mart_sales_summary')
-    description: "Total number of unique customers"
+  - name: unique_customers_metric
+    label: "Unique Customers"
+    description: "Number of unique customers"
     type: simple
     type_params:
-      measure:
-        name: unique_customers
-        agg: count_distinct
-        expr: customer_id
+      measure: unique_customers
 
-  - name: new_customers
-    label: "New Customers"
-    model: ref('mart_customer_metrics')
-    description: "Number of new customers"
-    type: simple
-    type_params:
-      measure:
-        name: new_customer_count
-        agg: count
-    filter: |
-      {% raw %}
-      {{ Dimension('customer_tenure') }} = 'New'
-      {% endraw %}
-
-  - name: customer_lifetime_value
-    label: "Customer Lifetime Value"
-    model: ref('mart_customer_metrics')
-    description: "Average lifetime value per customer"
-    type: simple
-    type_params:
-      measure:
-        name: avg_clv
-        agg: average
-        expr: total_revenue
-
-  # Conversion Metrics
-  - name: orders_per_customer
-    label: "Orders per Customer"
-    model: ref('mart_customer_metrics')
-    description: "Average number of orders per customer"
+  - name: revenue_per_customer
+    label: "Revenue per Customer"
+    description: "Average revenue per customer"
     type: ratio
     type_params:
-      numerator: total_orders
-      denominator: total_customers
-
-  - name: repeat_purchase_rate
-    label: "Repeat Purchase Rate"
-    model: ref('mart_customer_metrics')
-    description: "Percentage of customers who made more than one purchase"
-    type: ratio
-    type_params:
-      numerator:
-        name: repeat_customers
-        agg: count
-        expr: case when total_orders > 1 then customer_id end
-      denominator:
-        name: total_customers
-        agg: count
-        expr: customer_id
-
-  # Geographic Metrics
-  - name: revenue_by_country
-    label: "Revenue by Country"
-    model: ref('mart_sales_summary')
-    description: "Revenue broken down by country"
-    type: simple
-    type_params:
-      measure: total_amount
-    dimensions:
-      - country
-
-  # Time-based Metrics
-  - name: weekend_vs_weekday_orders
-    label: "Weekend vs Weekday Orders"
-    model: ref('mart_sales_summary')
-    description: "Order comparison between weekends and weekdays"
-    type: simple
-    type_params:
-      measure:
-        name: order_count
-        agg: count
-    dimensions:
-      - weekend_flag
-
-  # Payment Method Metrics
-  - name: revenue_by_payment_method
-    label: "Revenue by Payment Method"
-    model: ref('mart_sales_summary')
-    description: "Revenue distribution by payment method"
-    type: simple
-    type_params:
-      measure: total_amount
-    dimensions:
-      - payment_method
-
-  # Segmentation Metrics
-  - name: high_value_customers
-    label: "High Value Customers"
-    model: ref('mart_customer_metrics')
-    description: "Number of high-value customers"
-    type: simple
-    type_params:
-      measure:
-        name: high_value_count
-        agg: count
-    filter: |
-      {% raw %}
-      {{ Dimension('value_segment') }} = 'High Value'
-      {% endraw %}
-
-  - name: churned_customers
-    label: "Churned Customers"
-    model: ref('mart_customer_metrics')
-    description: "Number of churned customers"
-    type: simple
-    type_params:
-      measure:
-        name: churned_count
-        agg: count
-    filter: |
-      {% raw %}
-      {{ Dimension('recency_segment') }} = 'Churned'
-      {% endraw %}
+      numerator: total_revenue
+      denominator: unique_customers_metric

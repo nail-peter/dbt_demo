@@ -1,0 +1,14 @@
+version: "1"
+context:
+  active-host: "nt341.us1.dbt.com"
+  active-project: "70471823542106"
+projects:
+  - project-name: "Analytics"
+    project-id: "70471823542106"
+    account-name: "Salesforce"
+    account-id: "70471823524301"
+    account-host: "nt341.us1.dbt.com"
+    token-name: "cloud-cli-28e5"
+    token-value: "dbtu_qFbxAsM-pG4Ru8foX7HSQ9VtjEADBIQj00psHoo5UYCyc6dTfE"
+
+

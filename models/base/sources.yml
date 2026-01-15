@@ -2,7 +2,8 @@ version: 2
 
 sources:
   - name: raw_data
-    description: Raw data from PostgreSQL database
+    description: Raw data from PostgreSQL database via dbt Cloud
+    schema: public  # Adjust to your actual schema in dbt Cloud
     tables:
       - name: orders
         description: Customer orders table
