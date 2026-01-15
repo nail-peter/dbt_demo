@@ -1,0 +1,214 @@
+11:36:39  Running dbt...
+11:36:40  Found 12 models, 13 data tests, 3 sources, 5 metrics, 463 macros, 1 semantic model
+11:36:40  
+11:36:40
+11:36:40  Concurrency: 4 threads (target='default')
+11:36:40  
+11:36:40  1 of 25 START sql view model d2pbagf1jq37ti.base_customers_mock ................ [RUN]
+11:36:40  2 of 25 START sql view model d2pbagf1jq37ti.base_orders_mock ................... [RUN]
+11:36:40  3 of 25 START sql view model d2pbagf1jq37ti.base_products_mock ................. [RUN]
+11:36:40  4 of 25 START sql view model d2pbagf1jq37ti.metricflow_time_spine .............. [RUN]
+11:36:40  3 of 25 OK created sql view model d2pbagf1jq37ti.base_products_mock ............ [[32mCREATE VIEW[0m in 0.15s]
+11:36:40  4 of 25 OK created sql view model d2pbagf1jq37ti.metricflow_time_spine ......... [[32mCREATE VIEW[0m in 0.15s]
+11:36:40  1 of 25 OK created sql view model d2pbagf1jq37ti.base_customers_mock ........... [[32mCREATE VIEW[0m in 0.16s]
+11:36:40  2 of 25 OK created sql view model d2pbagf1jq37ti.base_orders_mock .............. [[32mCREATE VIEW[0m in 0.16s]
+11:36:40  5 of 25 START test source_not_null_raw_data_customers_customer_id .............. [RUN]
+11:36:40  6 of 25 START test source_not_null_raw_data_customers_email .................... [RUN]
+11:36:40  7 of 25 START test source_not_null_raw_data_orders_customer_id ................. [RUN]
+11:36:40  8 of 25 START test source_not_null_raw_data_orders_order_date .................. [RUN]
+11:36:40  8 of 25 ERROR source_not_null_raw_data_orders_order_date ....................... [[31mERROR[0m in 0.10s]
+11:36:40  5 of 25 ERROR source_not_null_raw_data_customers_customer_id ................... [[31mERROR[0m in 0.10s]
+11:36:40  7 of 25 ERROR source_not_null_raw_data_orders_customer_id ...................... [[31mERROR[0m in 0.10s]
+11:36:40  6 of 25 ERROR source_not_null_raw_data_customers_email ......................... [[31mERROR[0m in 0.10s]
+11:36:40  9 of 25 START test source_not_null_raw_data_orders_order_id .................... [RUN]
+11:36:40  10 of 25 START test source_not_null_raw_data_orders_total_amount ............... [RUN]
+11:36:40  11 of 25 START test source_not_null_raw_data_products_product_id ............... [RUN]
+11:36:40  12 of 25 START test source_not_null_raw_data_products_product_name ............. [RUN]
+11:36:41  9 of 25 ERROR source_not_null_raw_data_orders_order_id ......................... [[31mERROR[0m in 0.07s]
+11:36:41  11 of 25 ERROR source_not_null_raw_data_products_product_id .................... [[31mERROR[0m in 0.07s]
+11:36:41  13 of 25 START test source_unique_raw_data_customers_customer_id ............... [RUN]
+11:36:41  10 of 25 ERROR source_not_null_raw_data_orders_total_amount .................... [[31mERROR[0m in 0.08s]
+11:36:41  12 of 25 ERROR source_not_null_raw_data_products_product_name .................. [[31mERROR[0m in 0.08s]
+11:36:41  14 of 25 START test source_unique_raw_data_customers_email ..................... [RUN]
+11:36:41  15 of 25 START test source_unique_raw_data_orders_order_id ..................... [RUN]
+11:36:41  16 of 25 START test source_unique_raw_data_products_product_id ................. [RUN]
+11:36:41  14 of 25 ERROR source_unique_raw_data_customers_email .......................... [[31mERROR[0m in 0.07s]
+11:36:41  17 of 25 START sql view model d2pbagf1jq37ti.stg_products ...................... [RUN]
+11:36:41  16 of 25 ERROR source_unique_raw_data_products_product_id ...................... [[31mERROR[0m in 0.07s]
+11:36:41  13 of 25 ERROR source_unique_raw_data_customers_customer_id .................... [[31mERROR[0m in 0.10s]
+11:36:41  15 of 25 ERROR source_unique_raw_data_orders_order_id .......................... [[31mERROR[0m in 0.08s]
+11:36:41  18 of 25 START sql view model d2pbagf1jq37ti.stg_customers ..................... [RUN]
+11:36:41  19 of 25 START sql view model d2pbagf1jq37ti.stg_orders ........................ [RUN]
+11:36:41  20 of 25 SKIP relation d2pbagf1jq37ti.base_products ............................ [[33mSKIP[0m]
+11:36:41  21 of 25 SKIP relation d2pbagf1jq37ti.base_customers ........................... [[33mSKIP[0m]
+11:36:41  22 of 25 SKIP relation d2pbagf1jq37ti.base_orders .............................. [[33mSKIP[0m]
+11:36:41  17 of 25 OK created sql view model d2pbagf1jq37ti.stg_products ................. [[32mCREATE VIEW[0m in 0.08s]
+11:36:41  19 of 25 OK created sql view model d2pbagf1jq37ti.stg_orders ................... [[32mCREATE VIEW[0m in 0.08s]
+11:36:41  18 of 25 OK created sql view model d2pbagf1jq37ti.stg_customers ................ [[32mCREATE VIEW[0m in 0.08s]
+11:36:41  23 of 25 START test test_semantic_layer_setup .................................. [RUN]
+11:36:41  23 of 25 WARN 1 test_semantic_layer_setup ...................................... [[33mWARN 1[0m in 0.03s]
+11:36:41  24 of 25 START sql table model d2pbagf1jq37ti.mart_sales_summary ............... [RUN]
+11:36:41  24 of 25 OK created sql table model d2pbagf1jq37ti.mart_sales_summary .......... [[32mSELECT 10[0m in 0.10s]
+11:36:41  25 of 25 START sql table model d2pbagf1jq37ti.mart_customer_metrics ............ [RUN]
+11:36:41  25 of 25 OK created sql table model d2pbagf1jq37ti.mart_customer_metrics ....... [[32mSELECT 7[0m in 0.05s]
+11:36:41  
+11:36:41
+11:36:41  Finished running 2 table models, 13 data tests, 10 view models in 0 hours 0 minutes and 0.98 seconds (0.98s).
+11:36:41  
+11:36:41
+11:36:41  [31mCompleted with 12 errors, 0 partial successes, and 1 warning:[0m
+11:36:41  
+11:36:41
+11:36:41  [31mFailure in test source_not_null_raw_data_orders_order_date (models/base/sources.yml)[0m
+11:36:41
+11:36:41    Database Error in test source_not_null_raw_data_orders_order_date (models/base/sources.yml)
+  relation "public.orders" does not exist
+  LINE 17: from "d2pbagf1jq37ti"."public"."orders"
+                ^
+  compiled code at target/run/semantic_layer_project/models/base/sources.yml/source_not_null_raw_data_orders_order_date.sql
+11:36:41  
+11:36:41
+11:36:41    compiled code at target/compiled/semantic_layer_project/models/base/sources.yml/source_not_null_raw_data_orders_order_date.sql
+11:36:41  
+11:36:41
+11:36:41  [31mFailure in test source_not_null_raw_data_customers_customer_id (models/base/sources.yml)[0m
+11:36:41
+11:36:41    Database Error in test source_not_null_raw_data_customers_customer_id (models/base/sources.yml)
+  relation "public.customers" does not exist
+  LINE 17: from "d2pbagf1jq37ti"."public"."customers"
+                ^
+  compiled code at target/run/semantic_layer_project/models/base/sources.yml/source_not_null_raw_data_customers_customer_id.sql
+11:36:41  
+11:36:41
+11:36:41    compiled code at target/compiled/semantic_layer_project/models/base/sources.yml/source_not_null_raw_data_customers_customer_id.sql
+11:36:41  
+11:36:41
+11:36:41  [31mFailure in test source_not_null_raw_data_orders_customer_id (models/base/sources.yml)[0m
+11:36:41
+11:36:41    Database Error in test source_not_null_raw_data_orders_customer_id (models/base/sources.yml)
+  relation "public.orders" does not exist
+  LINE 17: from "d2pbagf1jq37ti"."public"."orders"
+                ^
+  compiled code at target/run/semantic_layer_project/models/base/sources.yml/source_not_null_raw_data_orders_customer_id.sql
+11:36:41  
+11:36:41
+11:36:41    compiled code at target/compiled/semantic_layer_project/models/base/sources.yml/source_not_null_raw_data_orders_customer_id.sql
+11:36:41  
+11:36:41
+11:36:41  [31mFailure in test source_not_null_raw_data_customers_email (models/base/sources.yml)[0m
+11:36:41
+11:36:41    Database Error in test source_not_null_raw_data_customers_email (models/base/sources.yml)
+  relation "public.customers" does not exist
+  LINE 17: from "d2pbagf1jq37ti"."public"."customers"
+                ^
+  compiled code at target/run/semantic_layer_project/models/base/sources.yml/source_not_null_raw_data_customers_email.sql
+11:36:41  
+11:36:41
+11:36:41    compiled code at target/compiled/semantic_layer_project/models/base/sources.yml/source_not_null_raw_data_customers_email.sql
+11:36:41  
+11:36:41
+11:36:41  [31mFailure in test source_not_null_raw_data_orders_order_id (models/base/sources.yml)[0m
+11:36:41
+11:36:41    Database Error in test source_not_null_raw_data_orders_order_id (models/base/sources.yml)
+  relation "public.orders" does not exist
+  LINE 17: from "d2pbagf1jq37ti"."public"."orders"
+                ^
+  compiled code at target/run/semantic_layer_project/models/base/sources.yml/source_not_null_raw_data_orders_order_id.sql
+11:36:41  
+11:36:41
+11:36:41    compiled code at target/compiled/semantic_layer_project/models/base/sources.yml/source_not_null_raw_data_orders_order_id.sql
+11:36:41  
+11:36:41
+11:36:41  [31mFailure in test source_not_null_raw_data_products_product_id (models/base/sources.yml)[0m
+11:36:41
+11:36:41    Database Error in test source_not_null_raw_data_products_product_id (models/base/sources.yml)
+  relation "public.products" does not exist
+  LINE 17: from "d2pbagf1jq37ti"."public"."products"
+                ^
+  compiled code at target/run/semantic_layer_project/models/base/sources.yml/source_not_null_raw_data_products_product_id.sql
+11:36:41  
+11:36:41
+11:36:41    compiled code at target/compiled/semantic_layer_project/models/base/sources.yml/source_not_null_raw_data_products_product_id.sql
+11:36:41  
+11:36:41
+11:36:41  [31mFailure in test source_not_null_raw_data_orders_total_amount (models/base/sources.yml)[0m
+11:36:41
+11:36:41    Database Error in test source_not_null_raw_data_orders_total_amount (models/base/sources.yml)
+  relation "public.orders" does not exist
+  LINE 17: from "d2pbagf1jq37ti"."public"."orders"
+                ^
+  compiled code at target/run/semantic_layer_project/models/base/sources.yml/source_not_null_raw_data_orders_total_amount.sql
+11:36:41  
+11:36:41
+11:36:41    compiled code at target/compiled/semantic_layer_project/models/base/sources.yml/source_not_null_raw_data_orders_total_amount.sql
+11:36:41  
+11:36:41
+11:36:41  [31mFailure in test source_not_null_raw_data_products_product_name (models/base/sources.yml)[0m
+11:36:41
+11:36:41    Database Error in test source_not_null_raw_data_products_product_name (models/base/sources.yml)
+  relation "public.products" does not exist
+  LINE 17: from "d2pbagf1jq37ti"."public"."products"
+                ^
+  compiled code at target/run/semantic_layer_project/models/base/sources.yml/source_not_null_raw_data_products_product_name.sql
+11:36:41  
+11:36:41
+11:36:41    compiled code at target/compiled/semantic_layer_project/models/base/sources.yml/source_not_null_raw_data_products_product_name.sql
+11:36:41  
+11:36:41
+11:36:41  [31mFailure in test source_unique_raw_data_customers_email (models/base/sources.yml)[0m
+11:36:41
+11:36:41    Database Error in test source_unique_raw_data_customers_email (models/base/sources.yml)
+  relation "public.customers" does not exist
+  LINE 18: from "d2pbagf1jq37ti"."public"."customers"
+                ^
+  compiled code at target/run/semantic_layer_project/models/base/sources.yml/source_unique_raw_data_customers_email.sql
+11:36:41  
+11:36:41
+11:36:41    compiled code at target/compiled/semantic_layer_project/models/base/sources.yml/source_unique_raw_data_customers_email.sql
+11:36:41  
+11:36:41
+11:36:41  [31mFailure in test source_unique_raw_data_products_product_id (models/base/sources.yml)[0m
+11:36:41
+11:36:41    Database Error in test source_unique_raw_data_products_product_id (models/base/sources.yml)
+  relation "public.products" does not exist
+  LINE 18: from "d2pbagf1jq37ti"."public"."products"
+                ^
+  compiled code at target/run/semantic_layer_project/models/base/sources.yml/source_unique_raw_data_products_product_id.sql
+11:36:41  
+11:36:41
+11:36:41    compiled code at target/compiled/semantic_layer_project/models/base/sources.yml/source_unique_raw_data_products_product_id.sql
+11:36:41  
+11:36:41
+11:36:41  [31mFailure in test source_unique_raw_data_customers_customer_id (models/base/sources.yml)[0m
+11:36:41
+11:36:41    Database Error in test source_unique_raw_data_customers_customer_id (models/base/sources.yml)
+  relation "public.customers" does not exist
+  LINE 18: from "d2pbagf1jq37ti"."public"."customers"
+                ^
+  compiled code at target/run/semantic_layer_project/models/base/sources.yml/source_unique_raw_data_customers_customer_id.sql
+11:36:41  
+11:36:41
+11:36:41    compiled code at target/compiled/semantic_layer_project/models/base/sources.yml/source_unique_raw_data_customers_customer_id.sql
+11:36:41  
+11:36:41
+11:36:41  [31mFailure in test source_unique_raw_data_orders_order_id (models/base/sources.yml)[0m
+11:36:41
+11:36:41    Database Error in test source_unique_raw_data_orders_order_id (models/base/sources.yml)
+  relation "public.orders" does not exist
+  LINE 18: from "d2pbagf1jq37ti"."public"."orders"
+                ^
+  compiled code at target/run/semantic_layer_project/models/base/sources.yml/source_unique_raw_data_orders_order_id.sql
+11:36:41  
+11:36:41
+11:36:41    compiled code at target/compiled/semantic_layer_project/models/base/sources.yml/source_unique_raw_data_orders_order_id.sql
+11:36:41  
+11:36:41
+11:36:41  [33mWarning in test test_semantic_layer_setup (tests/test_semantic_layer_setup.sql)[0m
+11:36:41  Got 1 result, configured to warn if != 0
+11:36:41  
+11:36:41
+11:36:41    compiled code at target/compiled/semantic_layer_project/tests/test_semantic_layer_setup.sql
+11:36:41  
+11:36:41
+11:36:41  Done. PASS=9 WARN=1 ERROR=12 SKIP=3 NO-OP=0 TOTAL=25
+dbt command failed

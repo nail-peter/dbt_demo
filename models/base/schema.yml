@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: base_orders_mock
+    description: "Mock orders data for semantic layer demo"
+    columns:
+      - name: order_id
+        description: "Unique identifier for each order"
+        data_type: integer
+      - name: customer_id
+        description: "Reference to customer"
+        data_type: integer
+      - name: total_amount
+        description: "Total order amount"
+        data_type: numeric
+
+  - name: base_customers_mock
+    description: "Mock customers data for semantic layer demo"
+    columns:
+      - name: customer_id
+        description: "Unique identifier for each customer"
+        data_type: integer
+      - name: email
+        description: "Customer email address"
+        data_type: text
+
+  - name: base_products_mock
+    description: "Mock products data for semantic layer demo"
+    columns:
+      - name: product_id
+        description: "Unique identifier for each product"
+        data_type: integer
+      - name: product_name
+        description: "Name of the product"
+        data_type: text
