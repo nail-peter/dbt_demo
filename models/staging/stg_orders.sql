@@ -7,7 +7,7 @@
 -- Staging model for orders with data cleaning and standardization
 
 with source_data as (
-    select * from {{ ref('base_orders') }}
+    select * from {{ ref('base_orders_mock') }}
 ),
 
 cleaned_orders as (

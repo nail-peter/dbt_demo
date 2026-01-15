@@ -4,7 +4,7 @@ models:
   - name: metricflow_time_spine
     description: "Time spine model for MetricFlow semantic layer"
     config:
-      materialized: table
+      materialized: view
     columns:
       - name: date_day
         description: "Daily date dimension"

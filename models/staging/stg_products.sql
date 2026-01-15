@@ -7,7 +7,7 @@
 -- Staging model for products with data cleaning and standardization
 
 with source_data as (
-    select * from {{ ref('base_products') }}
+    select * from {{ ref('base_products_mock') }}
 ),
 
 cleaned_products as (

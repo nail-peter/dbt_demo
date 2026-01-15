@@ -7,7 +7,7 @@
 -- Staging model for customers with data cleaning and standardization
 
 with source_data as (
-    select * from {{ ref('base_customers') }}
+    select * from {{ ref('base_customers_mock') }}
 ),
 
 cleaned_customers as (

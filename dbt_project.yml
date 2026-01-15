@@ -23,11 +23,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   semantic_layer_project:
     # Applies to all files under models/...
-    materialized: table
+    materialized: view
     staging:
       +materialized: view
     marts:
-      +materialized: table
+      +materialized: view
+    base:
+      +materialized: view
 
 # Enable dbt's semantic layer
 semantic-models:
