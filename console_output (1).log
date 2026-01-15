@@ -1,0 +1,5 @@
+11:40:36  Running dbt...
+11:40:36  Encountered an error:
+Compilation Error
+  Model 'model.semantic_layer_project.base_orders' (models/base/base_orders.sql) depends on a source named 'raw_data.orders' which was not found
+dbt command failed
