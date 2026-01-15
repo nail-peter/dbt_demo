@@ -1,0 +1,30 @@
+# dbt profiles configuration for PostgreSQL
+# This file should normally be in ~/.dbt/profiles.yml
+# But for this project, we'll keep it local
+
+semantic_layer_project:
+  outputs:
+    dev:
+      type: postgres
+      host: localhost  # Change to your PostgreSQL host
+      user: "{{ env_var('DBT_POSTGRES_USER') }}"  # Use environment variable
+      password: "{{ env_var('DBT_POSTGRES_PASSWORD') }}"  # Use environment variable
+      port: 5432
+      dbname: "{{ env_var('DBT_POSTGRES_DB', 'analytics') }}"  # Default to 'analytics'
+      schema: dbt_dev
+      threads: 4
+      keepalives_idle: 0  # default 0, indicating the system default
+      search_path: "dbt_dev,public"  # optional, not recommended
+
+    prod:
+      type: postgres
+      host: "{{ env_var('DBT_POSTGRES_HOST_PROD') }}"
+      user: "{{ env_var('DBT_POSTGRES_USER_PROD') }}"
+      password: "{{ env_var('DBT_POSTGRES_PASSWORD_PROD') }}"
+      port: 5432
+      dbname: "{{ env_var('DBT_POSTGRES_DB_PROD') }}"
+      schema: dbt_prod
+      threads: 4
+      keepalives_idle: 0
+
+  target: dev  # Default target is dev

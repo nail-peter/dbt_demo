@@ -1,0 +1,149 @@
+version: 2
+
+semantic_models:
+  - name: sales_semantic_model
+    description: "Semantic model for sales analysis in Tableau"
+    model: ref('mart_sales_summary')
+    defaults:
+      agg_time_dimension: order_date
+
+    dimensions:
+      - name: order_date
+        type: time
+        type_params:
+          time_granularity: day
+
+      - name: order_month
+        type: time
+        type_params:
+          time_granularity: month
+        expr: "date_trunc('month', order_date)"
+
+      - name: order_year
+        type: time
+        type_params:
+          time_granularity: year
+        expr: "date_trunc('year', order_date)"
+
+      - name: customer_id
+        type: categorical
+
+      - name: customer_name
+        type: categorical
+
+      - name: customer_segment
+        type: categorical
+
+      - name: customer_tenure
+        type: categorical
+
+      - name: country
+        type: categorical
+
+      - name: city
+        type: categorical
+
+      - name: order_status
+        type: categorical
+
+      - name: order_value_segment
+        type: categorical
+
+      - name: payment_method
+        type: categorical
+
+      - name: season
+        type: categorical
+
+      - name: weekend_flag
+        type: categorical
+
+    measures:
+      - name: total_revenue
+        agg: sum
+        expr: total_amount
+        description: "Total revenue from orders"
+
+      - name: order_count
+        agg: count
+        description: "Number of orders"
+
+      - name: unique_customers
+        agg: count_distinct
+        expr: customer_id
+        description: "Number of unique customers"
+
+      - name: average_order_value
+        agg: average
+        expr: total_amount
+        description: "Average order value"
+
+      - name: max_order_value
+        agg: max
+        expr: total_amount
+        description: "Maximum order value"
+
+      - name: min_order_value
+        agg: min
+        expr: total_amount
+        description: "Minimum order value"
+
+  - name: customer_semantic_model
+    description: "Semantic model for customer analysis in Tableau"
+    model: ref('mart_customer_metrics')
+
+    dimensions:
+      - name: customer_id
+        type: categorical
+        is_partition: true
+
+      - name: customer_segment
+        type: categorical
+
+      - name: customer_tenure
+        type: categorical
+
+      - name: country
+        type: categorical
+
+      - name: city
+        type: categorical
+
+      - name: order_frequency_segment
+        type: categorical
+
+      - name: value_segment
+        type: categorical
+
+      - name: recency_segment
+        type: categorical
+
+      - name: first_order_date
+        type: time
+        type_params:
+          time_granularity: day
+
+    measures:
+      - name: total_customers
+        agg: count
+        description: "Total number of customers"
+
+      - name: total_customer_revenue
+        agg: sum
+        expr: total_revenue
+        description: "Total revenue from all customers"
+
+      - name: avg_customer_orders
+        agg: average
+        expr: total_orders
+        description: "Average number of orders per customer"
+
+      - name: avg_customer_lifetime_value
+        agg: average
+        expr: total_revenue
+        description: "Average customer lifetime value"
+
+      - name: avg_order_value_per_customer
+        agg: average
+        expr: avg_order_value
+        description: "Average order value across customers"

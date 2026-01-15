@@ -1,0 +1,45 @@
+# dbt_project.yml
+
+name: 'semantic_layer_project'
+version: '1.0.0'
+config-version: 2
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'semantic_layer_project'
+
+# These configurations specify where dbt should look for different types of files.
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+# Configuring models
+models:
+  semantic_layer_project:
+    # Applies to all files under models/...
+    materialized: table
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+
+# Enable dbt's semantic layer
+semantic-models:
+  semantic_layer_project:
+    +enabled: true
+
+# Metrics configuration
+metrics:
+  semantic_layer_project:
+    +enabled: true
+
+vars:
+  # dbt will use these values to replace variables in your models
+  start_date: '2020-01-01'
+  end_date: '2024-12-31'
